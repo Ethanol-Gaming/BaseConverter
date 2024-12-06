@@ -1,0 +1,85 @@
+import java.util.*;
+public class Converter
+{
+    //Instance Variables:
+    private int input;
+    //Constructor:
+    public Converter() {
+        input = 0;
+    }
+    //Custom Methods:
+    public String biToDec() {
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter Binary");
+        String i = kb.nextLine();
+        int decimal = 0;
+        for (int j = 0; j<i.length(); j++) {
+            if (i.charAt(j)=='1') {
+                decimal = decimal+(int)Math.pow(2, (i.length() - j - 1));
+            }
+        }
+        String dec = decimal+"";
+        return dec;
+        
+    }
+    public String biToDec(String i) {
+        int decimal = 0;
+        for (int j = 0; j<i.length(); j++) {
+            if (i.charAt(j)=='1') {
+                decimal = decimal+(int)Math.pow(2, (i.length() - j - 1));
+            }
+        }
+        String dec = decimal+"";
+        return dec;
+    }
+    public String decToBi() {
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter Decimal less than 8000.");
+        int i = kb.nextInt();
+        int c = 4096;
+        String ans="";
+        boolean startPrint=false;
+        while (i>0) {
+            if ((i/c)>1 || (i/c)==1) {
+                //ok we have a number that fits
+                startPrint=true;
+                ans=ans+"1";
+                i=i-c;
+                c=c/2;
+            } else {
+                if (startPrint) {
+                    ans=ans+"0";
+                    c=c/2; 
+                } else {
+                    c=c/2;
+                }
+            }
+        }
+        return ans;
+    }
+    public String decToBi(int i) {
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter Decimal less than 8000.");
+        i = kb.nextInt();
+        int c = 4096;
+        String ans="";
+        boolean startPrint=false;
+        while (i>0) {
+            if ((i/c)>1 || (i/c)==1) {
+                //ok we have a number that fits
+                startPrint=true;
+                ans=ans+"1";
+                i=i-c;
+                c=c/2;
+            } else {
+                if (startPrint) {
+                    ans=ans+"0";
+                    c=c/2; 
+                } else {
+                    c=c/2;
+                }
+            }
+        }
+        return ans;
+    }
+}
